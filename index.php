@@ -1,7 +1,7 @@
 <?php
 date_default_timezone_set('asia/bangkok');
 
-//$accesstoken = getenv('LINE_ACCESS_TOKEN');
+$accesstoken = getenv('LINE_ACCESS_TOKEN');
 
 
 $inputData = file_get_contents("php://input");
