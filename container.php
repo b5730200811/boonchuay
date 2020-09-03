@@ -6,7 +6,7 @@ function response($inputJson) {
 	return $arraypost;
 }
 
-function reply($accesstoken,$output){
+function reply($accesstoken,$output) {
 	$sent = curl_init();
     $url = "https://api.line.me/v2/bot/message/reply";
     
@@ -27,11 +27,11 @@ function reply($accesstoken,$output){
     curl_close($sent);
 }
 
-function show_event_type($inputJSON){
+function show_event_type($inputJSON) {
 	return $inputJSON["events"][0]["type"];
 }
 
-function add_text($output,$index,$text){
+function add_text($output,$index,$text) {
 	$output["messages"][$index]["type"] = "text";
 	$output["messages"][$index]["text"] = $text;
 	return $output;
