@@ -9,11 +9,13 @@ $accesstoken = getenv('LINE_ACCESS_TOKEN');
 $inputData = file_get_contents("php://input");
 $inputJson = json_decode($inputData,true);
 
-$outputJson = response($inputJson);
+$output = response($inputJson);
 
 $count = 0;
 
-$text = "test message";
-$outputJson = add_text($outputJson,$count++,$text);
+$eventType = show_event_type($inputJSON);
 
-reply($accesstoken,$outputJson);
+$text = $eventType;
+$output = add_text($output,$count++,$text);
+
+reply($accesstoken,$output);
