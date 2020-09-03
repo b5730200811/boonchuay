@@ -16,6 +16,6 @@ $count = 0;
 $eventType = show_event_type($inputJson);
 
 $text = $eventType;
-$output = add_text($output,$count++,$text);
+$output = add_text($output,$count++,json_encode($inputJson));
 
 reply($accesstoken,$output);
