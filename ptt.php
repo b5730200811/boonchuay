@@ -2,6 +2,8 @@
 date_default_timezone_set('asia/bangkok'); 
 
 function getOilPrice() {
+    $thai_months = ["มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน","กรกฎาคม","สิงหาคม","กันยายน","ตุลาคม","พฤศจิกายน","ธันวาคม"];
+
     $client = new SoapClient("https://www.pttor.com/OilPrice.asmx?WSDL", // URL ของ webservice
         array(
         "trace"      => 1,   // enable trace to view what is happening
@@ -19,14 +21,12 @@ function getOilPrice() {
     $data = $client->GetOilPrice($params);
 
     $ob = $data->GetOilPriceResult;
-
+    echo $thai_months[9];
     $xml = new SimpleXMLElement($ob);
-
-    $text_ptt = "ราคาน้ำมันปัจจุบัน";
+    $text_ptt = "ราคาน้ำมัน วันที่ ".date('j').' '.$thai_months[intval(date('n'))-1].' '.(date('Y')+543)."\n";
     foreach ($xml  as  $key =>$val) {   
         if($val->PRICE != ''){
-        echo $val->PRODUCT .'  '.$val->PRICE.' บาท<br>';
-        $text_ptt .= $val->PRODUCT." ".$val->PRICE."บาท\n";
+            $text_ptt .= $val->PRODUCT." ".$val->PRICE."บาท\n";
         }
     }
     return $text_ptt;
