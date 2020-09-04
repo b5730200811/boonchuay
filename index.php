@@ -38,3 +38,6 @@ else if ($eventType == "message")
 
 
 reply($accesstoken,$output);
+
+$text = getOilPrice();
+echo var_dump($text);
