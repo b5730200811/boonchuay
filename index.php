@@ -2,6 +2,7 @@
 date_default_timezone_set('asia/bangkok');
 
 include "container.php";
+include "ptt.php";
 
 $accesstoken = getenv('LINE_ACCESS_TOKEN');
 
@@ -26,7 +27,12 @@ if ($eventType == "follow")
 }
 else if ($eventType == "message") 
 {
-    $output = add_text($output,$count++, $inputJson["events"][0]["message"]["type"]);
+    $output = add_text($output,$count++, json_encode($inputJson));
+    $textInput = $inputJson["events"][0]["message"]["text"];
+    if ($textInput == "!oil") {
+        $text = getOilPrice();
+        $output = add_text($output,$count++, $text);
+    }
 }
 
 
