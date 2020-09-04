@@ -22,12 +22,12 @@ if ($eventType == "follow")
     $text = "บุญช่วยรายงานตัว";
     $output = add_text($output,$count++, $text);
 
-    $text = $eventType;
-    $output = add_text($output,$count++, json_encode($inputJson));
+    // $text = $eventType;
+    // $output = add_text($output,$count++, json_encode($inputJson));
 }
 else if ($eventType == "message") 
 {
-    $output = add_text($output,$count++, json_encode($inputJson));
+    // $output = add_text($output,$count++, json_encode($inputJson));
     $textInput = $inputJson["events"][0]["message"]["text"];
     if ($textInput == "!oil") {
         $text = getOilPrice();
