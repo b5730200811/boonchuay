@@ -28,7 +28,7 @@ if ($eventType == "follow")
 }
 else if ($eventType == "message") 
 {
-    $output = add_text($output,$count++, json_encode($inputJson));
+    $output = add_text($output,$count++, show_message_type($inputJson));
     $textInput = $inputJson["events"][0]["message"]["text"];
     if ($textInput == "!oil") {
         $text = getOilPrice();

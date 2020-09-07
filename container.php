@@ -27,8 +27,12 @@ function reply($accesstoken,$output) {
     curl_close($sent);
 }
 
-function show_event_type($inputJSON) {
-	return $inputJSON["events"][0]["type"];
+function show_event_type($inputJson) {
+	return $inputJson["events"][0]["type"];
+}
+
+function show_message_type($inputJson) {
+	return $inputJson["events"][0]["message"]["type"];
 }
 
 function add_text($output,$index,$text) {
