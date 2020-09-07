@@ -3,6 +3,7 @@ date_default_timezone_set('asia/bangkok');
 
 include "container.php";
 include "ptt.php";
+include "tmd.php";
 
 $accesstoken = getenv('LINE_ACCESS_TOKEN');
 $tmdAccesstoken = getenv('TMD_ACCESS_TOKEN');
@@ -15,24 +16,27 @@ $output = response($inputJson);
 
 $count = 0;
 
-$eventType = show_event_type($inputJson);
+$eventType = get_event_type($inputJson);
 
 if ($eventType == "follow") 
 {
-
-    $text = "บุญช่วยรายงานตัว";
-    $output = add_text($output,$count++, $text);
-
-    // $text = $eventType;
-    // $output = add_text($output,$count++, json_encode($inputJson));
+    $output = add_text($output,$count++, "บุญช่วยรายงานตัว");
 }
 else if ($eventType == "message") 
 {
-    $output = add_text($output,$count++, show_message_type($inputJson));
-    $textInput = $inputJson["events"][0]["message"]["text"];
-    if ($textInput == "!oil") {
-        $text = getOilPrice();
-        $output = add_text($output,$count++, $text);
+    // $output = add_text($output,$count++, get_message_type($inputJson));
+
+    $messageType = get_message_type($inputJson);
+    $messageText = get_message_text($inputJson);
+
+    if ($messageType == "location") {
+        $lat = $lon = 0;
+        array($lat,$lon) = get_location($inputJson);
+        $output = add_text($output,$count++, json_encode(array($lat,$lon));
+        $output = add_text($output,$count++, json_encode(getWeather(strval($lat),strval($lon))));
+    }
+    if ($messageText == "!oil") {
+        $output = add_text($output,$count++, getOilPrice());
     }
 }
 

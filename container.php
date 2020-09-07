@@ -27,12 +27,21 @@ function reply($accesstoken,$output) {
     curl_close($sent);
 }
 
-function show_event_type($inputJson) {
+function get_event_type($inputJson) {
 	return $inputJson["events"][0]["type"];
 }
 
-function show_message_type($inputJson) {
+function get_message_type($inputJson) {
 	return $inputJson["events"][0]["message"]["type"];
+}
+
+function get_message_text($inputJson) {
+	return $inputJson["events"][0]["message"]["text"];
+}
+
+function get_location($inputJson) {
+	$message = $inputJson["events"][0]["message"];
+	return array($message["latitude"],$message["longitude"]);
 }
 
 function add_text($output,$index,$text) {
