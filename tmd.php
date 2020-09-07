@@ -27,5 +27,4 @@ function getWeather($lat,$lon) {
     print_r($contentJson->WeatherForecasts[0]->forecasts);
     curl_close($sent);
 }
-getWeather('13','100');
 ?>

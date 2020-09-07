@@ -30,7 +30,8 @@ else if ($eventType == "message")
     $messageText = get_message_text($inputJson);
 
     if ($messageType == "location") {
-        $lat = $lon = 0;
+        $lat = 0;
+        $lon = 0;
         array($lat,$lon) = get_location($inputJson);
         $output = add_text($output,$count++, json_encode(array($lat,$lon));
         $output = add_text($output,$count++, json_encode(getWeather(strval($lat),strval($lon))));
