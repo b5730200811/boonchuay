@@ -32,8 +32,8 @@ else if ($eventType == "message")
     if ($messageType == "location") {
         $lat = 0;
         $lon = 0;
-        array($lat,$lon) = get_location($inputJson);
-        $output = add_text($output,$count++, json_encode(array($lat,$lon));
+        list($lat,$lon) = get_location($inputJson);
+        $output = add_text($output,$count++, json_encode(array($lat,$lon)));
         $output = add_text($output,$count++, json_encode(getWeather(strval($lat),strval($lon))));
     }
     if ($messageText == "!oil") {
