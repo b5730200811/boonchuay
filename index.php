@@ -5,6 +5,7 @@ include "container.php";
 include "ptt.php";
 
 $accesstoken = getenv('LINE_ACCESS_TOKEN');
+$tmdAccesstoken = getenv('TMD_ACCESS_TOKEN');
 
 
 $inputData = file_get_contents("php://input");
@@ -27,7 +28,7 @@ if ($eventType == "follow")
 }
 else if ($eventType == "message") 
 {
-    // $output = add_text($output,$count++, json_encode($inputJson));
+    $output = add_text($output,$count++, json_encode($inputJson));
     $textInput = $inputJson["events"][0]["message"]["text"];
     if ($textInput == "!oil") {
         $text = getOilPrice();
