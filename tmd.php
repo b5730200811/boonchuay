@@ -25,6 +25,8 @@ function getWeather($lat,$lon) {
     $content = curl_exec($sent);
     $contentJson = json_decode($content);
     print_r($contentJson->WeatherForecasts[0]->forecasts);
+    
+    return $contentJson->WeatherForecasts[0]->forecasts;
     curl_close($sent);
 }
 ?>
