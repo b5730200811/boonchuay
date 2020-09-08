@@ -34,9 +34,9 @@ else if ($eventType == "message")
         $lon = 0;
         list($lat,$lon) = get_location($inputJson);
         $output = add_text($output,$count++, json_encode(array($lat,$lon)));
-        $output = add_text($output,$count++, strval($lat));
-        $output = add_text($output,$count++, strval($lon));
-        $output = add_text($output,$count++, json_encode(getWeather(strval($lat),strval($lon))));
+        $output = add_text($output,$count++, $lat);
+        $output = add_text($output,$count++, $lon);
+        $output = add_text($output,$count++, json_encode(getWeather($lat,$lon)));
     }
     if ($messageText == "!oil") {
         $output = add_text($output,$count++, getOilPrice());
@@ -46,6 +46,3 @@ else if ($eventType == "message")
 
 
 reply($accesstoken,$output);
-
-$text = getOilPrice();
-echo var_dump($text);
