@@ -8,6 +8,7 @@ include "tmd.php";
 $accesstoken = getenv('LINE_ACCESS_TOKEN');
 $tmdAccesstoken = getenv('TMD_ACCESS_TOKEN');
 
+echo "tmd => " . $tmdAccesstoken . "<br/>";
 
 $inputData = file_get_contents("php://input");
 $inputJson = json_decode($inputData, true);
