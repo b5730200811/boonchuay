@@ -20,6 +20,7 @@ function getWeather($lat,$lon) {
 
     curl_setopt($sent,CURLOPT_HTTPHEADER,$arrayheader);
     $url = $url . '?' . http_build_query($postData);
+    echo $tmdAccesstoken."<br/>";
     echo $url;
 	//curl_setopt($sent,CURLOPT_POSTFIELDS,json_encode($postData));
 	curl_setopt($sent,CURLOPT_RETURNTRANSFER,true);
