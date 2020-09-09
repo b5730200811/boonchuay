@@ -18,8 +18,10 @@ function getWeather($lat,$lon) {
         'duration' => 48
     );
 
-	curl_setopt($sent,CURLOPT_HTTPHEADER,$arrayheader);
-	curl_setopt($sent,CURLOPT_POSTFIELDS,json_encode($postData));
+    curl_setopt($sent,CURLOPT_HTTPHEADER,$arrayheader);
+    $url = $url . '?' . http_build_query($postData);
+    echo $url;
+	//curl_setopt($sent,CURLOPT_POSTFIELDS,json_encode($postData));
 	curl_setopt($sent,CURLOPT_RETURNTRANSFER,true);
     curl_setopt($sent, CURLOPT_SSL_VERIFYPEER, true);
     $content = curl_exec($sent);
