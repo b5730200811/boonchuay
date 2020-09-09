@@ -1,12 +1,13 @@
 <?php
 date_default_timezone_set('asia/bangkok');
 
+$accesstoken = getenv('LINE_ACCESS_TOKEN');
+$tmdAccesstoken = getenv('TMD_ACCESS_TOKEN');
+
 include "container.php";
 include "ptt.php";
 include "tmd.php";
 
-$accesstoken = getenv('LINE_ACCESS_TOKEN');
-$tmdAccesstoken = getenv('TMD_ACCESS_TOKEN');
 
 echo "tmd => " . $tmdAccesstoken . "<br/>";
 
