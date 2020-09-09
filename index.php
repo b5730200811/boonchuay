@@ -9,8 +9,6 @@ include "ptt.php";
 include "tmd.php";
 
 
-echo "tmd => " . $tmdAccesstoken . "<br/>";
-
 $inputData = file_get_contents("php://input");
 $inputJson = json_decode($inputData, true);
 
