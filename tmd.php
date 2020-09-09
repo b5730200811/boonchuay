@@ -17,11 +17,11 @@ function getWeather($lat,$lon) {
         'fields' => 'tc,rh,rain,cond',
         'duration' => 48
     );
-    
+
 	curl_setopt($sent,CURLOPT_HTTPHEADER,$arrayheader);
 	curl_setopt($sent,CURLOPT_POSTFIELDS,json_encode($postData));
 	curl_setopt($sent,CURLOPT_RETURNTRANSFER,true);
-    curl_setopt($sent, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($sent, CURLOPT_SSL_VERIFYPEER, true);
     $content = curl_exec($sent);
     $contentJson = json_decode($content);
     print_r($contentJson);
