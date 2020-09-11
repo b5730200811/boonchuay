@@ -33,5 +33,5 @@ function getWeather($tmdAccesstoken,$lat,$lon) {
     curl_close($sent);
     return $contentJson;
 }
-print_r(getWeather(tmdAccesstoken,13.08,100.91));
+print_r(getWeather($tmdAccesstoken,13.08,100.91));
 ?>
