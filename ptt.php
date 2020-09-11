@@ -23,10 +23,10 @@ function getOilPrice() {
     $ob = $data->GetOilPriceResult;
     echo $thai_months[9];
     $xml = new SimpleXMLElement($ob);
-    $text_ptt = "ราคาน้ำมัน วันที่ ".date('j').' '.$thai_months[intval(date('n'))-1].' '.(date('Y')+543)."\n";
+    $text_ptt = "ราคาน้ำมัน วันที่ ".date('j').' '.$thai_months[intval(date('n'))-1].' '.(date('Y')+543)." เวลา".date("H:i:s");
     foreach ($xml  as  $key =>$val) {   
         if($val->PRICE != ''){
-            $text_ptt .= $val->PRODUCT." ".$val->PRICE."บาท\n";
+            $text_ptt .= "\n".$val->PRODUCT." ".$val->PRICE." บาท";
         }
     }
     return $text_ptt;
