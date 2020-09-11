@@ -1,6 +1,6 @@
 <?php
 
-function getWeather($lat,$lon) {
+function getWeather($tmdAccesstoken,$lat,$lon) {
     $sent = curl_init();
     $url = "https://data.tmd.go.th/nwpapi/v1/forecast/location/hourly/at";
     
@@ -33,5 +33,5 @@ function getWeather($lat,$lon) {
     curl_close($sent);
     return $contentJson;
 }
-print_r(getWeather(13.08,100.91));
+print_r(getWeather(tmdAccesstoken,13.08,100.91));
 ?>
